@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--Web Form-->
+      <form id="form" name="form">
+        <h1>New Test Form</h1>
+        <fieldset id="form-content">
+          <label for="api-key">API-Key: </label>
+          <input
+            type="text"
+            id="api-key"
+            name="api-key"
+            required
+            aria-describedby="key-validation"
+          />
+          <span
+            id="key-validation"
+            aria-live="assertive"
+            class="validation-message"
+          ></span>
+
+          <fieldset>
+            <legend>Title or IMDB ID:</legend>
+
+            <input
+              type="radio"
+              id="title-radio"
+              name="radio-additional"
+              value="title-radio"
+              class="radio-field"
+              data-controls="title-additional"
+              required
+            />
+            <label for="title-radio">Title</label>
+            <div id="title-additional" class="additional">
+              <label for="title">Please enter the Title: </label>
+              <input type="text" id="title" name="title" />
+            </div>
+
+            <input
+              type="radio"
+              id="imdb-radio"
+              name="radio-additional"
+              value="imdb-radio"
+              class="radio-field"
+              data-controls="imdb-additional"
+              required
+            />
+            <label for="imdb-radio">IMDb Id</label>
+            <div id="imdb-additional" class="additional">
+              <label for="imdb-id">Please enter the IMDb Id: </label>
+              <input type="text" id="imdb-id" name="imdb-id" />
+            </div>
+          </fieldset>
+
+          <label for="year">Year(optional): </label>
+          <input type="number" id="year" name="year" min="1928" max="2022" />
+
+          <fieldset>
+            <legend>Short or Long Plot:</legend>
+
+            <input
+              type="radio"
+              id="short-radio"
+              name="short-long-radio"
+              value="short"
+              class="radio-field-2"
+              required
+            />
+            <label for="short-radio">Short Plot</label>
+            <input
+              type="radio"
+              id="long-radio"
+              name="short-long-radio"
+              value="full"
+              class="radio-field-2"
+              required
+            />
+            <label for="long-radio">Long Plot</label>
+          </fieldset>
+
+          <input type="submit" id="submit-button" value="Submit" />
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="output"></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
