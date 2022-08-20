@@ -1,6 +1,6 @@
 //Conditional text box fields based on radio button being checked
 const form = document.getElementById("form");
-const testForm = document.getElementById("form-content");
+// const testForm = document.getElementById("form-content");
 const output = document.getElementById("output");
 const radioFields = document.querySelectorAll(".radio-field");
 const additionalFields = document.querySelectorAll(".additional");
@@ -39,7 +39,7 @@ if (radioFields && radioFields.length > 0) {
 }
 
 //Tell form what to do on Submit Button Click
-document.getElementById("form").addEventListener("submit", (event) => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
   output.replaceChildren();
 
@@ -51,8 +51,6 @@ document.getElementById("form").addEventListener("submit", (event) => {
     let valueString = value;
     input.push(valueString);
   }
-
-  formDisable();
 
   let url = "";
   const apiKeyValue = "apikey=" + input[0];
@@ -127,10 +125,10 @@ function showMovie(data) {
 }
 
 //Disable/Enable Form Contents (***on submit not yet added***)
-function formDisable() {
-  if (!testForm.disabled) {
-    testForm.disabled = true;
-  } else {
-    testForm.disabled = false;
-  }
-}
+// function formDisable() {
+//   if (!testForm.disabled) {
+//     testForm.disabled = true;
+//   } else {
+//     testForm.disabled = false;
+//   }
+// }
