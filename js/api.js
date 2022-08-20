@@ -1,10 +1,14 @@
+import { store } from "./store.js";
+
 let apiKey = document.querySelector("#api-key").value.trim();
 
-export async function search(param, results) {
+export async function search(param, output) {
   const url = await fetch(`https://omdbapi.com/?s=${param}&apikey=${apiKey}`);
 
   const data = await url.json();
   const search = data.Search;
+
+  store.newSearch(url.url);
 
   for (let i = 0; i < search.length; i++) {
     const titles = search[i].Title;
@@ -16,6 +20,7 @@ export async function search(param, results) {
     newMovie.setAttribute("year", year);
     newMovie.setAttribute("poster", poster);
 
-    results.append(newMovie);
+    output.append(newMovie);
+    console.log(url.url);
   }
 }
