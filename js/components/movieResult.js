@@ -1,5 +1,3 @@
-import { store } from "../store.js";
-
 class MovieResult extends HTMLElement {
   constructor() {
     super();
@@ -52,8 +50,20 @@ class MovieResult extends HTMLElement {
       this.moviePoster.src = poster;
     }
 
-    store.subscribe((current) => {
-      this.setAttribute("searchedAPI", current.name);
+    this.movieComment = this.shadowRoot.querySelector("#movie-comment");
+    this.movieCommentBtn = this.shadowRoot.querySelector("#post-btn");
+
+    this.movieCommentBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const commentList = this.shadowRoot.querySelector(".comment-list");
+
+      const newComment = this.movieComment.value;
+      const commentItem = `<li class="comment-list__item">${newComment}</li>`;
+
+      commentList.innerHTML += commentItem;
+
+      this.movieComment.value = "";
     });
   }
 }

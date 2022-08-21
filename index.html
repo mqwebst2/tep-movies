@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Vite App</title>
   </head>
   <body>
     <div id="app">
       <!--Web Form-->
       <form id="form" name="form">
-        <h1>New Test Form</h1>
+        <h1>Search for your favorite movie</h1>
 
         <label for="api-key">API-Key:</label>
         <input type="text" id="api-key" name="api-key" />
@@ -21,31 +22,7 @@
       </form>
     </div>
 
-    <div id="output">
-      <!--Template for movie result-->
-      <template id="output-template">
-        <div id="new-movie__content">
-          <h2 id="new-movie__title">New Movie: The Movie</h2>
-          <div id="new-movie__year">2022</div>
-          <img id="new-movie__poster" src="" /><br />
-
-          <div class="comment-and-like">
-            <label for="movie-comment">Leave A Comment:</label>
-            <textarea
-              id="movie-comment"
-              name="movie-comment"
-              cols="30"
-              rows="10"
-            ></textarea>
-            <button id="post-btn" class="comment-and-like__btn">Post</button>
-            <button id="like-btn" class="comment-and-like__btn">
-              Favorite
-            </button>
-            <div id="new-comment"></div>
-          </div>
-        </div>
-      </template>
-    </div>
+    <div id="output"></div>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

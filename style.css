@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  margin: 0;
+  padding: 4% 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1670ba;
+  color: white;
+  height: 20vh;
+}
+
+h1 {
+  text-align: center;
+}
