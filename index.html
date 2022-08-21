@@ -27,7 +27,22 @@
         <div id="new-movie__content">
           <h2 id="new-movie__title">New Movie: The Movie</h2>
           <div id="new-movie__year">2022</div>
-          <img id="new-movie__poster" src="" />
+          <img id="new-movie__poster" src="" /><br />
+
+          <div class="comment-and-like">
+            <label for="movie-comment">Leave A Comment:</label>
+            <textarea
+              id="movie-comment"
+              name="movie-comment"
+              cols="30"
+              rows="10"
+            ></textarea>
+            <button id="post-btn" class="comment-and-like__btn">Post</button>
+            <button id="like-btn" class="comment-and-like__btn">
+              Favorite
+            </button>
+            <div id="new-comment"></div>
+          </div>
         </div>
       </template>
     </div>
