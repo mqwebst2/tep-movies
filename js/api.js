@@ -1,5 +1,3 @@
-import { store } from "./store.js";
-
 let apiKey = document.querySelector("#api-key").value.trim();
 
 export async function search(param, output) {
@@ -7,8 +5,6 @@ export async function search(param, output) {
 
   const data = await url.json();
   const search = data.Search;
-
-  store.newSearch(url.url);
 
   for (let i = 0; i < search.length; i++) {
     const titles = search[i].Title;
