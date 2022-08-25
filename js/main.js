@@ -1,6 +1,13 @@
 import "./components/movieResult.js";
 
+import { store } from "./store.js";
 import { search } from "./api.js";
+
+window.onload = function () {
+  const apiKey = document.querySelector("#api-key");
+
+  store.setAPI(apiKey);
+};
 
 const outputTemplate = `
 <template id="output-template">
@@ -35,6 +42,7 @@ const outputTemplate = `
       display: flex;
       flex-direction: row;
       margin: 8% 0 4% 0;
+      column-gap: 8%;
     }
 
     .comment-and-like__btn {
@@ -47,7 +55,9 @@ const outputTemplate = `
     }
 
     .comment-list {
-      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
   </style>
 
@@ -66,6 +76,7 @@ const outputTemplate = `
       ></textarea><br />
       <div class="comment-and-like__btn-items">
         <button id="post-btn" class="comment-and-like__btn">Post</button>
+        <button id="like-btn" class="comment-and-like__btn">Like</button>
       </div>
       <div id="new-comment">
         <ul class="comment-list"></ul>

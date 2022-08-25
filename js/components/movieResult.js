@@ -52,6 +52,7 @@ class MovieResult extends HTMLElement {
 
     this.movieComment = this.shadowRoot.querySelector("#movie-comment");
     this.movieCommentBtn = this.shadowRoot.querySelector("#post-btn");
+    this.movieCommentLikeBtn = this.shadowRoot.querySelector("#like-btn");
 
     this.movieCommentBtn.addEventListener("click", (event) => {
       event.preventDefault();

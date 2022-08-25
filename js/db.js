@@ -1,8 +1,9 @@
 import { openDB } from "idb";
 
-export const database = openDB("movie-search", 1, {
+export const database = openDB("movieSearch", 1, {
   upgrade(db) {
-    db.createObjectStore("new-search");
-    db.createObjectStore("new-comment");
+    db.createObjectStore("stateChange");
+    db.createObjectStore("apiKey");
+    db.createObjectStore("newSearch");
   },
 });
