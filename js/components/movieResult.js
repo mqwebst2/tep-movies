@@ -1,3 +1,5 @@
+import { store } from "../store.js";
+
 class MovieResult extends HTMLElement {
   constructor() {
     super();
@@ -37,6 +39,7 @@ class MovieResult extends HTMLElement {
     const name = this.getAttribute("name");
     const year = this.getAttribute("year");
     const poster = this.getAttribute("poster");
+    const id = this.getAttribute("imdbID");
 
     if (name) {
       this.movieName.textContent = name;
@@ -50,9 +53,20 @@ class MovieResult extends HTMLElement {
       this.moviePoster.src = poster;
     }
 
+    // Like button and functionality
+    this.movieCommentLikeBtn = this.shadowRoot.querySelector("#like-btn");
+
+    this.movieCommentLikeBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      store.addFavorite(id);
+
+      console.log(id);
+    });
+
+    // Comment button and functionality
     this.movieComment = this.shadowRoot.querySelector("#movie-comment");
     this.movieCommentBtn = this.shadowRoot.querySelector("#post-btn");
-    this.movieCommentLikeBtn = this.shadowRoot.querySelector("#like-btn");
 
     this.movieCommentBtn.addEventListener("click", (event) => {
       event.preventDefault();

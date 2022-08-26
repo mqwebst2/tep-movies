@@ -4,16 +4,26 @@ export class StoreSetup {
   constructor(init = {}) {
     const self = this;
     this.subscribers = [];
+    this.newList = [];
 
     database.then(async (db) => {
       this.db = db;
 
       const keyValue = await db.get("stateChange", "keyValue");
 
+      const nameList = await db.get("favorites", "nameList");
+
       if (keyValue) {
         this.set("hasKey", true);
       } else {
         this.set("hasKey", false);
+      }
+
+      if (nameList) {
+        this.set("nameList", nameList);
+        console.log(this.get("nameList"));
+      } else {
+        console.log("No available names for this state");
       }
     });
 
@@ -50,13 +60,11 @@ export class StoreSetup {
   }
 
   get(key) {
-    console.log(this.state[key]);
     return this.state[key];
   }
 
-  disableField(field) {
-    field.disabled = true;
-    field.type = "password";
+  addSearch(url) {
+    this.set("searchURL", url);
   }
 
   setHasKey(keyValue) {
@@ -67,6 +75,11 @@ export class StoreSetup {
     } else {
       this.set("hasKey", true);
     }
+  }
+
+  disableField(field) {
+    field.disabled = true;
+    field.type = "password";
   }
 
   setAPI(test) {
@@ -87,13 +100,44 @@ export class StoreSetup {
     });
   }
 
-  addSearch(url) {
-    this.set("searchURL", url);
+  addFavorite(newFavorite) {
+    this.state.nameList.push(newFavorite);
+    console.log(this.state.nameList);
+    console.log(this.state.nameList.length);
+
+    database.then(async (db) => {
+      this.db = db;
+
+      this.db.put("favorites", this.state.nameList, "nameList");
+    });
+  }
+
+  checkFavorite() {
+    if (this.state.nameList !== []) {
+      let checkList = [];
+
+      for (let i = 0; i < this.state.nameList.length; i++) {
+        checkList.push(this.state.nameList[i]);
+      }
+
+      console.log(checkList);
+      return checkList;
+    }
+  }
+
+  getFavorite() {
+    database.then(async (db) => {
+      this.db = db;
+
+      const nameList = await db.get("favorites", "nameList");
+      console.log(nameList);
+    });
   }
 }
 
 export const store = new StoreSetup({
   keyValue: "",
+  nameList: [],
   searchURL: "",
   hasKey: false,
 });
