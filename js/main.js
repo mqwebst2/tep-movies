@@ -5,15 +5,11 @@ import { store } from "./store.js";
 import { search } from "./api.js";
 import { outputTemplate } from "./components/resultTemplate.js";
 
-let idList = [];
-
 // PAGE LOAD EVENT
 window.addEventListener("DOMContentLoaded", () => {
   const apiKey = document.querySelector("#api-key");
   store.setAPI(apiKey);
 });
-
-console.log(idList);
 
 // FORM SUBMISSION EVENT
 document.querySelector("#form").addEventListener("submit", (event) => {
