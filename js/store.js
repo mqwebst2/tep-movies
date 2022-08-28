@@ -4,26 +4,16 @@ export class StoreSetup {
   constructor(init = {}) {
     const self = this;
     this.subscribers = [];
-    this.newList = [];
 
     database.then(async (db) => {
       this.db = db;
 
       const keyValue = await db.get("stateChange", "keyValue");
 
-      const nameList = await db.get("favorites", "nameList");
-
       if (keyValue) {
         this.set("hasKey", true);
       } else {
         this.set("hasKey", false);
-      }
-
-      if (nameList) {
-        this.set("nameList", nameList);
-        console.log(this.get("nameList"));
-      } else {
-        console.log("No available names for this state");
       }
     });
 
@@ -100,37 +90,16 @@ export class StoreSetup {
     });
   }
 
-  addFavorite(newFavorite) {
+  setFavorite(newFavorite) {
     this.state.nameList.push(newFavorite);
-    console.log(this.state.nameList);
+    this.set("nameList", this.state.nameList);
+    console.log(this.get("nameList"));
     console.log(this.state.nameList.length);
 
     database.then(async (db) => {
       this.db = db;
 
       this.db.put("favorites", this.state.nameList, "nameList");
-    });
-  }
-
-  checkFavorite() {
-    if (this.state.nameList !== []) {
-      let checkList = [];
-
-      for (let i = 0; i < this.state.nameList.length; i++) {
-        checkList.push(this.state.nameList[i]);
-      }
-
-      console.log(checkList);
-      return checkList;
-    }
-  }
-
-  getFavorite() {
-    database.then(async (db) => {
-      this.db = db;
-
-      const nameList = await db.get("favorites", "nameList");
-      console.log(nameList);
     });
   }
 }

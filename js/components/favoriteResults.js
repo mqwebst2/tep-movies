@@ -61,4 +61,4 @@ class Favorites extends HTMLElement {
   }
 }
 
-customElements.define("favorites", Favorites);
+customElements.define("favorite-result", Favorites);

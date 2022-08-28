@@ -30,13 +30,15 @@ export async function search(param, output) {
   }
 }
 
-// export async function favSearch(param, output) {
+// export async function favSearch(list, output) {
 //   let apiKey = document.querySelector("#api-key");
 
-//   for (let i = 0; i < param.length; i++) {
+//   for (const item in list) {
 //     const url = await fetch(
-//       `https://omdbapi.com/?i=${param[i]}&apikey=${apiKey.value}`
+//       `https://omdbapi.com/?i=${item}&apikey=${apiKey.value}`
 //     );
+
+//     console.log(url);
 
 //     const data = await url.json();
 //     const search = data.Search;
@@ -47,13 +49,13 @@ export async function search(param, output) {
 //       const poster = search[i].Poster;
 //       const id = search[i].imdbID;
 
-//       const newMovie = document.createElement("favorites");
-//       newMovie.setAttribute("name", titles);
-//       newMovie.setAttribute("year", year);
-//       newMovie.setAttribute("poster", poster);
-//       newMovie.setAttribute("imdbID", id);
+//       const newFav = document.createElement("favorite-result");
+//       newFav.setAttribute("name", titles);
+//       newFav.setAttribute("year", year);
+//       newFav.setAttribute("poster", poster);
+//       newFav.setAttribute("imdbID", id);
 
-//       output.append(newMovie);
+//       output.append(newFav);
 //     }
 //   }
 // }

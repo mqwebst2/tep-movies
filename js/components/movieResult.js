@@ -59,9 +59,11 @@ class MovieResult extends HTMLElement {
     this.movieCommentLikeBtn.addEventListener("click", (event) => {
       event.preventDefault();
 
-      store.addFavorite(id);
+      store.setFavorite(id);
 
-      console.log(id);
+      store.subscribe((current) => {
+        this.setAttribute("nameList", current.nameList);
+      });
     });
 
     // Comment button and functionality
